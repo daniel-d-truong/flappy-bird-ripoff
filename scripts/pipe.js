@@ -1,14 +1,17 @@
 function Pipe() {
   //needs
-  this.top = random(height/2);
+  this.top = random(height/2); //in the future, create diff algorithm for pipe lengths
   this.bottom = random(height/2);
   this.x = width;
   this.w = 20;
   this.speed = 3;
 
+  this.highlight = false;
+
   this.hits = function(bird){
     if (bird.y < this.top || bird.y > height-this.bottom){
       if (bird.x > this.x && bird.x < this.x+this.w){
+        this.highlight = true;
         return true;
       }
     }
@@ -17,14 +20,17 @@ function Pipe() {
 
   this.show = function() {
     fill(255);
+    if (this.highlight) {
+      fill(255,0,0); //fill takes up to 3 parameters, rgb
+    }
     rect(this.x, 0, this.w, this.top);
     rect(this.x, height-this.bottom, this.w, this.bottom);
-    console.log("show");
+    this.highlight = false;
   }
 
   this.update = function() {
     this.x -= this.speed;
-    console.log("update");
+
   }
 
   this.offscreen = function() {

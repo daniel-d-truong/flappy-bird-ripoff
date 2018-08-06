@@ -10,7 +10,7 @@ function setup() {
 
 function draw() {
   // put drawing code here
-  background(0);
+  background(0); //takes rgb parameters
   bird.update();
   bird.show();
 
