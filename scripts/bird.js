@@ -2,8 +2,8 @@ function Bird() {
   this.y = height/2;
   this.x = 64;
 
-  this.gravity = .1;
-  this.lift = -10;
+  this.gravity = .6;
+  this.lift = -20; //find a way to make the lift constant
   this.velocity = 0;
 
   this.show = function() {
@@ -14,12 +14,13 @@ function Bird() {
   this.up = function(){
   //   this.velocity
     this.velocity += this.lift;
-    this.y += this.velocity*10; //the lower the y, the higher the bird
+   //the lower the y, the higher the bird
     console.log("SPACE");
   }
 
   this.update = function() {
     this.velocity += this.gravity;
+    this.velocity *= 0.9;
     this.y += this.velocity;
 
     if (this.y > height){ //if y = height, it is at the bottom
