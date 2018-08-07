@@ -2,7 +2,9 @@ let bird;
 let pipes = [];
 
 let displayScore = document.querySelector("#num-score");
+let displayHits = document.querySelector("#num-hits");
 let score = 0;
+let hits = 0;
 
 function setup() {
   // put setup code here
@@ -29,8 +31,12 @@ function draw() {
       console.log("NOT HIT");
       score++;
       displayScore.innerHTML = score;
-
     }
+    else {
+      hits++; 
+      displayHits.innerHTML = hits;
+    }
+
 
     if (pipes[i].offscreen()) {
       pipes.splice(i,1)
