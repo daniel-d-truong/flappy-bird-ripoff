@@ -1,12 +1,15 @@
 function Pipe() {
-  //needs
-  this.top = random(height/2); //in the future, create diff algorithm for pipe lengths
-  this.bottom = random(height/2);
+  //in the future, create diff algorithm for pipe lengths
+
+  this.top = random(height/2); //top height of bottom pipe
+  this.bottom = random(height/2); //low height of top pipe
   this.x = width;
   this.w = 20;
   this.speed = 3;
 
   this.highlight = false;
+
+
 
   this.hits = function(bird){
     if (bird.y < this.top || bird.y > height-this.bottom){

@@ -1,6 +1,9 @@
 let bird;
 let pipes = [];
 
+let displayScore = document.querySelector("#num-score");
+let score = 0;
+
 function setup() {
   // put setup code here
   createCanvas(400,600);
@@ -22,8 +25,11 @@ function draw() {
     pipes[i].show();
     pipes[i].update();
 
-    if (pipes[i].hits(bird)) {
-      console.log("HIT");
+    if (pipes[i].hits(bird) == false) {
+      console.log("NOT HIT");
+      score++;
+      displayScore.innerHTML = score;
+
     }
 
     if (pipes[i].offscreen()) {
