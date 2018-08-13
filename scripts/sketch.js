@@ -44,6 +44,16 @@ function draw() {
       pipes.splice(i,1)
     }
   }
+
+  console.log("NO DRAW");
+
+}
+function mousePressed(){
+  noLoop();
+}
+
+function mouseReleased(){
+  loop();
 }
 
 function keyPressed() {

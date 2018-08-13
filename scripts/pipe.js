@@ -15,7 +15,7 @@ function Pipe() {
     }
   }
 
-  this.hits = function(bird){
+  this.hits = function(bird){ //checks if bird hits the pipe
     if (bird.y < this.top || bird.y > height-this.bottom){
       if (this.betweenPipes(bird)){
         this.highlight = true;
