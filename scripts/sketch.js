@@ -1,5 +1,6 @@
 let bird;
 let pipes = [];
+let paused = false;
 
 let displayScore = document.querySelector("#num-score");
 let displayHits = document.querySelector("#num-hits");
@@ -11,6 +12,7 @@ function setup() {
   createCanvas(400,600);
   bird = new Bird();
   pipes.push(new Pipe());
+
 }
 
 function draw() {
@@ -27,13 +29,13 @@ function draw() {
     pipes[i].show();
     pipes[i].update();
 
-    if (pipes[i].hits(bird) == false) {
+    if (pipes[i].betweenPipes(bird) && pipes[i].hits(bird) == false) {
       console.log("NOT HIT");
       score++;
       displayScore.innerHTML = score;
     }
-    else {
-      hits++; 
+    else if (pipes[i].betweenPipes(bird) && pipes[i].hits(bird)){
+      hits++;
       displayHits.innerHTML = hits;
     }
 
@@ -49,4 +51,11 @@ function keyPressed() {
     //console.log("SPACE");
     bird.up();
   }
+  // if (paused == false && key == 'f'){
+  //   paused=true;
+  //   noLoop();
+  // }
+  // if (paused && key == 'f'){
+  //   loop();
+  // }
 }

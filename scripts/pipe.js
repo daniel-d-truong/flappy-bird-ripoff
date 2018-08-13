@@ -3,17 +3,21 @@ function Pipe() {
 
   this.top = random(height/2); //top height of bottom pipe
   this.bottom = random(height/2); //low height of top pipe
-  this.x = width;
-  this.w = 20;
+  this.x = width; //x = 0 is left side, x = width is right side
+  this.w = 20; //w is width of the PIPE
   this.speed = 3;
 
   this.highlight = false;
 
-
+  this.betweenPipes = function(bird){ //checks if x position of bird is between x positions of pipe
+    if (bird.x > this.x && bird.x < this.x+this.w){
+      return true;
+    }
+  }
 
   this.hits = function(bird){
     if (bird.y < this.top || bird.y > height-this.bottom){
-      if (bird.x > this.x && bird.x < this.x+this.w){
+      if (this.betweenPipes(bird)){
         this.highlight = true;
         return true;
       }
